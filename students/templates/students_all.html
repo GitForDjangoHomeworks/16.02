@@ -1,0 +1,35 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    
+<table class="table table-striped">
+    <tbody>
+        
+        {% for group in main_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ group.0 }}</td>
+                
+                {% for student in group %}
+                    {% if student != group.0 %}
+                    
+                        {% if student %}
+                                <td><a href="{% url 'students:show_students_grid' student.pk %}">{{ student }}</a></td> 
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    {% endif %}
+                        
+                        
+                {% endfor %}
+                    
+            </tr>  
+            
+        {% endfor %}
+    
+            
+    </tbody>
+</table>
+
+{% endblock content %}
+    
